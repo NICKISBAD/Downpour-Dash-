@@ -1,0 +1,1 @@
+loadstring(game:HttpGet("https://raw.githubusercontent.com/NICKISBAD/Downpour-Dash-/main/GUI.lua"))()
