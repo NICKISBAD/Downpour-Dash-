@@ -175,3 +175,82 @@ Tab:AddButton({
     end
 
 })
+
+local player = game:GetService("Players").LocalPlayer
+
+local mouse = player:GetMouse()
+
+local isFlying = false
+
+local bodyVelocity
+
+local function enableFly()
+
+    if isFlying then return end
+
+    
+
+    local character = player.Character or player.CharacterAdded:Wait()
+
+    
+
+    
+
+    bodyVelocity = Instance.new("BodyVelocity")
+
+    bodyVelocity.Velocity = Vector3.new(0, 0, 0)
+
+    bodyVelocity.MaxForce = Vector3.new(0, math.huge, 0)
+
+    bodyVelocity.Parent = character.HumanoidRootPart
+
+    
+
+    isFlying = true
+
+end
+
+local function disableFly()
+
+    if not isFlying then return end
+
+    
+
+    if bodyVelocity then
+
+        bodyVelocity:Destroy()
+
+        bodyVelocity = nil
+
+    end
+
+    
+
+    isFlying = false
+
+end
+
+Tab:AddButton({
+
+    Name = "Float",
+
+    Callback = function()
+
+        enableFly()
+
+    end
+
+})
+
+Tab:AddButton({
+
+    Name = "Un-Float",
+
+    Callback = function()
+
+        disableFly()
+
+    end
+
+})
+
